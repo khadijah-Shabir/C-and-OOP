@@ -1,0 +1,67 @@
+#include<iostream>
+#include<string> // Include this header for using string
+using namespace std;
+
+class Human {
+protected:
+    int walk;
+    int sleep;
+    string eat;
+
+public:
+    void walk1() {
+        cout << "Enter the number of hours you walk daily: " << endl;
+        cin >> walk;
+    }
+    void sleep1() {
+        cout << "Enter the number of hours you sleep daily: " << endl;
+        cin >> sleep;
+    }
+    void eat1() {
+        cout << "Please let us know what you have eaten today: " << endl;
+        cin >> eat;
+    }
+};
+
+class khadijah : public Human {
+protected:
+    int work;
+    int study;
+    int chillpill;
+
+public:
+    void work1() {
+        cout << "Enter the number of hours you work daily: " << endl;
+        cin >> work;
+    }
+    void study1() {
+        cout << "Enter the number of hours you study daily: " << endl;
+        cin >> study;
+    }
+    void chillpill1() {
+        cout << "Enter the number of hours you allocate for refreshment: " << endl;
+        cin >> chillpill;
+    }
+    void display() {
+        cout << "Based on your input, here is your daily routine" << endl;
+        cout << "You walk " << walk << " hours every day." << endl;
+        cout << "You sleep " << sleep << " hours every day." << endl;
+        cout << "You have eaten " << eat << " today." << endl;
+        cout << "You work " << work << " hours every day." << endl;
+        cout << "You study " << study << " hours every day." << endl;
+        cout << "You relax " << chillpill << " hours every day." << endl;
+    }
+};
+
+int main() { // Corrected signature for main()
+    khadijah k;
+    k.walk1();
+    k.sleep1();
+    k.eat1();
+    k.work1();
+    k.study1();
+    k.chillpill1();
+    k.display();
+
+    return 0;
+}

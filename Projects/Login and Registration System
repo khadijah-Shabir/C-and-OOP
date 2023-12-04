@@ -1,0 +1,182 @@
+//Login and Registeration System using C++
+
+//Login and Registeration System using C++
+
+#include<iostream>
+#include<string>
+#include<vector>
+#include<cstdlib>  //for clrscr system
+
+using namespace std;
+
+class User{
+	private:
+	string username, password;
+	
+	public:
+		User(string name,string pass){                //Created constructor ofclass User
+			username=name;
+			password=pass;
+		}
+		
+   string getusername(){
+   	return username;
+   }
+   string getpassword(){
+   	return password;
+   }
+	
+};
+
+class UserManager{
+	private:
+		
+    // created object of vector class first of all
+	vector<User> users;   //syntax( vector<class name> Object name)
+	
+
+	public:	
+		//let's make a method of register user
+		void RegisterUser(){
+			string username;
+			string password;
+			
+			cout<<"\t\tEnter username: ";
+			cin>>username;
+			cout<<"\t\tEnter your Password: ";
+			cin>>password;
+			cout<<endl;
+			
+			//using first class here	
+  	             User newUser(username, password); //newuser is an object of class in which all the data is stored.
+	             users.push_back(newUser);
+	
+	        cout<< "\t\tUser Registered Successfully......"<<endl;
+		}
+		
+	bool LoginUser(string name, string pass){
+		for(int i=0; i<users.size(); i++){	
+		if(users[i].getusername()==name &&users[i].getpassword()==pass){
+			cout<<"\t\t Login Successfully. . ."<<endl;
+			return true;
+		}
+	  }
+	  cout<<"Invalid Username or Password..."<<endl;
+	  return false;
+	}
+		
+	void showuser(){
+		cout<<"\t\t----Users List----"<<endl;
+		for(int i=0; i<users.size(); i++){
+			cout<<"\t\t"<<users[i].getusername()<<endl;
+		}		
+	}
+	
+	void searchuser(string username){
+		for(int i=0; i<users.size(); i++){            //it will check all the users present in the vector like 1 2 3
+			if(users[i].getusername()==username){ // if user present in vecor is eqaul to username
+				cout<<"\t\t User Found"<<endl;
+			}
+		}
+	}
+	
+	void deleteuser(string username){
+			for(int i=0; i<users.size(); i++){            
+			if(users[i].getusername()==username){
+				users.erase(users.begin() +i);
+				cout<<"\t\t User data Removed Successfully"<<endl;
+			}
+		}
+		
+	}
+	
+	
+};
+ main(){
+	
+	UserManager usermanage;
+	
+	system("cls");
+
+cout<<"\n\t\t\t**********************************";
+cout<<"\n\t\t\t* Login and Registeration System *";
+cout<<"\n\t\t\t**********************************";
+cout<<"\n\n\t\t\t\Developed By:";
+cout<<"Khadijah Shabir"<<endl;
+cout<< "\n\n\t\t\tEnjoy the Login and Registeration Process";
+	int op;
+	char choice;
+	
+do{	
+	system("cls");	
+	
+	cout<<"\n\n\t\t------------------------------";
+	cout<<"\n\n\t\t1. Resister User"<<endl;
+	cout<<"\t\t2. Login"<<endl; 
+	cout<<"\t\t3. Show user list"<<endl;
+	cout<<"\t\t4. Search User"<<endl;
+	cout<<"\t\t5. Delete User"<<endl;
+	cout<<"\t\t6. Exit";
+	cout<<"\n\n\t\t------------------------------";
+	cout<<endl;
+	cout<<"\t\tEnter Your Choice: ";
+	cin>>op;
+
+
+	
+	switch(op){
+		case 1:
+			usermanage.RegisterUser();
+			break;
+	case 2:
+	{
+	    string username, password;
+	    cout<<"\t\t Enter Username " ;
+	    cin>>username;
+	    cout<<"\t\t Enter Password " ;
+	    cin>>password;
+	    
+	    usermanage.LoginUser(username, password);
+		break;
+	}
+	
+	case 3:
+		{
+			usermanage.showuser();
+			break;
+			
+		}
+	case 4:
+	{
+		string username;
+		cout<<"\t\t Enter username"<<endl;
+		cin>>username;
+		usermanage.searchuser(username);
+		break;
+	}
+	
+	case 5:
+	{
+		string username;
+		cout<<"\t\tEnter Username"<<endl;
+		cin>>username;
+		usermanage.deleteuser(username);
+		break;
+	}
+	
+	case 6:
+	{
+		exit(1);
+	}
+	}
+	cout<<"Do you want to continue[Yes/ Not] ?";
+	cin>>choice;
+   }while(choice='y'|| 'Y');
+
+	
+
+	
+    
+	
+}
+
